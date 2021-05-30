@@ -1,5 +1,5 @@
 import { Component, DoCheck, OnChanges, SimpleChanges } from '@angular/core';
-import { emptyTile, numberOfNeighboursWithBomb, Tile, computeNeighbours, Coord, initialseGridWith, isSameCoord, positions, DEFAULT_BOMB_PROBABILTY } from 'src/app/grid';
+import { emptyTile, numberOfNeighboursWithBomb, Tile, computeNeighbours, Coord, initGridWith, isSameCoord, positions, DEFAULT_BOMB_PROBABILTY, initBombGridWith } from 'src/app/grid';
 import { randomProbabilty } from 'src/app/utils';
 
 @Component({
@@ -8,7 +8,7 @@ import { randomProbabilty } from 'src/app/utils';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements DoCheck {
-  grid: Tile[][] = initialseGridWith(() => emptyTile);
+  grid: Tile[][] = initGridWith(emptyTile);
   bombProbabilityPerTile: number = DEFAULT_BOMB_PROBABILTY;
   haveBombsBeenInitialsed: boolean = false;
   isGameOver: boolean = false;
@@ -26,7 +26,7 @@ export class GameComponent implements DoCheck {
 
   handleLeftClick({ row, col }: Coord) {
     if (!this.haveBombsBeenInitialsed) {
-      this.initBombGrid();
+      this.initBombGrid({ row, col });
       this.revealNeighbouringTiles({ row, col }, []);
     } else if (!this.grid[row][col].hasFlag && this.grid[row][col].hasBomb) {
       this.isGameOver = true;
@@ -36,8 +36,8 @@ export class GameComponent implements DoCheck {
   }
 
   // Initialise a grid of bombs, where each tile has some probability of being a bomb
-  initBombGrid() {
-    const newBombGrid = initialseGridWith(() => randomProbabilty(this.bombProbabilityPerTile));
+  initBombGrid(exlusion: Coord) {
+    const newBombGrid = initBombGridWith(this.bombProbabilityPerTile, exlusion);
 
     positions.forEach(({ row, col }) => this.grid[row][col].hasBomb = newBombGrid[row][col]);
     this.haveBombsBeenInitialsed = true;
@@ -72,7 +72,7 @@ export class GameComponent implements DoCheck {
   }
 
   resetGame() {
-    this.grid = initialseGridWith(() => emptyTile);
+    this.grid = initGridWith(emptyTile);
     this.haveBombsBeenInitialsed = false;
     this.isGameOver = false;
   }

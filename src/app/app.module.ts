@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { GameComponent } from './components/game/game.component';
 import { TileComponent } from './components/tile/tile.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { ModalComponent } from './modal/modal.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [

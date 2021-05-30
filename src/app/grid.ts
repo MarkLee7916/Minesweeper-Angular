@@ -25,13 +25,31 @@ export const WIDTH = computeDimensionRatios(50, window.innerWidth);
 export const positions = generatePossiblePositions();
 
 // Initialise a grid of dimensions HEIGHT x WIDTH with some value
-export function initialseGridWith<T>(getInput: () => T): T[][] {
+export function initGridWith<T>(input: T): T[][] {
     const grid: T[][] = [];
 
     for (let row = 0; row < HEIGHT; row++) {
         grid.push([]);
         for (let col = 0; col < WIDTH; col++) {
-            grid[row].push(deepCopy(getInput()));
+            grid[row].push(deepCopy(input));
+        }
+    }
+
+    return grid;
+}
+
+// Initialise a grid of bombs, where each tile has some probability of being a bomb
+export function initBombGridWith(probability: number, exclusion: Coord) {
+    const grid: boolean[][] = [];
+
+    for (let row = 0; row < HEIGHT; row++) {
+        grid.push([]);
+        for (let col = 0; col < WIDTH; col++) {
+            if (row === exclusion.row && col === exclusion.col) {
+                grid[row].push(false);
+            } else {
+                grid[row].push(randomProbabilty(probability));
+            }
         }
     }
 
