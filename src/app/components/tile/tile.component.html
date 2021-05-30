@@ -1,0 +1,9 @@
+<div 
+    (click)="onLeftClick()" 
+    (contextmenu)="onRightClick($event)"
+    class="tile"
+    [style.backgroundColor]="tile.isRevealed ? '#A9A9A9' : 'white'"
+    [style.color]="frontierValueToColor.get(tile.bombNeighbourCount)"
+>
+    {{getDisplaySymbol()}}
+</div>

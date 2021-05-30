@@ -1,0 +1,21 @@
+<div id="menu">
+    <div class="slider-container">
+        <span>Bomb probability per tile:</span>
+    
+        <input 
+            (change)="onBombProbabiltyChange($event)" 
+            type="range" 
+            [defaultValue]="bombProbabilityPerTile" 
+            min="0"
+            max="100" 
+        />
+    
+        <span>{{bombProbabilityPerTile}}%</span>
+    </div>
+
+    <button (click)="onReset()">Reset Game</button>
+
+    <button (click)="onResize()">Resize Page</button>
+
+    <button (click)="onShowTutorial()">Tutorial</button>
+</div>

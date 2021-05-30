@@ -1,0 +1,15 @@
+.tile {
+  height: calc((2.5vmax + 2.5vmin) / 2);
+  width: calc((2.5vmax + 2.5vmin) / 2);
+  text-align: center;
+  font-weight: 1000;
+  font-size: calc((1.5vmax + 1.5vmin) / 2);
+  overflow: hidden;
+  background-color: white;
+  border: 1px solid paleturquoise;
+}
+
+.tile:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}

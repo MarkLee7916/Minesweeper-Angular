@@ -1,0 +1,26 @@
+<div id="main-content" [style.opacity]="isModalVisible ? '0.1' : '1'">
+    <app-menu 
+        [(bombProbabilityPerTile)]="bombProbabilityPerTile" 
+        (resetEmit)="resetGame()" 
+        (resizeEmit)="resizePage()"
+        (showTutorialEmit)="showTutorial()"
+    >
+    </app-menu>
+    <div id="board">
+        <div class="row" *ngFor="let row of grid; let rowIndex = index">
+            <app-tile 
+                *ngFor="let tile of row; let colIndex = index" 
+                (leftClickEmit)="handleLeftClick($event)"
+                (rightClickEmit)="handleRightClick($event)"         
+                [coord]="{row: rowIndex, col: colIndex}" 
+                [tile]="tile"
+                [isGameOver]="isGameOver"
+            >
+            </app-tile>
+        </div>
+    </div>
+</div>
+
+<app-modal (hideEmit)="hideTutorial()" *ngIf="isModalVisible"></app-modal>
+
+

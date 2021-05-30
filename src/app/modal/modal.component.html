@@ -1,0 +1,74 @@
+<div *ngIf="modalIndex === 0" class="modal">
+    <h1 class="modal-heading">Minesweeper</h1>
+    <p class="modal-subheading">This tutorial will explain what this app is and walk you through the features</p>
+    <p class="modal-text">
+        You can jump in immediately by pressing "skip tutorial", or click "next" to access the next portion of the
+        tutorial
+    </p>
+
+    <img src="assets/screenshot.png" class="modal-image"/>
+    <button (click)="onHide()" class="finish-tutorial">Close Tutorial</button>
+    <button (click)="nextModal()" class="next-page">Next</button>
+</div>
+
+<div *ngIf="modalIndex === 1" class="modal">
+    <h1 class="modal-heading">Controls</h1>
+    <p class="modal-subheading"><strong>Revealing a tile:</strong></p>
+    <p class="modal-text">PC: left click the tile with your mouse</p>
+    <p class="modal-text">Mobile: Tap the tile on the screen when "Placing: Reveal" is selected</p>
+
+    <p class="modal-subheading"><strong>Placing/Unplacing a flag:</strong></p>
+    <p class="modal-text">PC: right click the tile with your mouse</p>
+    <p class="modal-text">Mobile: Tap the tile on the screen when "Placing: Flag 🚩" is selected</p>
+
+    <button (click)="onHide()" class="finish-tutorial">Close Tutorial</button>
+    <button (click)="prevModal()" class="prev-page">Prev</button>
+    <button (click)="nextModal()" class="next-page">Next</button>
+</div>
+
+<div *ngIf="modalIndex === 2" class="modal">
+    <h1 class="modal-heading">Automatic Saving</h1>
+    <p class="modal-subheading">
+        This app automatically saves your game whenever you make a move, so you can exit and come back later and your
+        game will still be intact
+    </p>
+
+    <p class="modal-subheading">
+        Note that changing the bomb probability will reset the game and delete the saves, as we need to generate a new
+        grid
+    </p>
+
+    <button (click)="onHide()" class="finish-tutorial">Close Tutorial</button>
+    <button (click)="prevModal()" class="prev-page">Prev</button>
+    <button (click)="nextModal()" class="next-page">Next</button>
+</div>
+
+<div *ngIf="modalIndex === 3" class="modal">
+    <h1 class="modal-heading">Resizing Grid</h1>
+    <p class="modal-subheading">
+        The dimensions of the grid automatically fit to whatever kind of screen you're using, however if you've started
+        a game
+        and you resize the window it won't resize the grid as it would need to reset the game
+    </p>
+
+    <p class="modal-subheading">
+        You can manually resize the grid by clicking the "Resize Grid" button in the menu
+    </p>
+
+    <button (click)="onHide()" class="finish-tutorial">Close Tutorial</button>
+    <button (click)="prevModal()" class="prev-page">Prev</button>
+    <button (click)="nextModal()" class="next-page">Next</button>
+</div>
+
+<div *ngIf="modalIndex === 4" class="modal">
+    <h1 class="modal-heading">That's all folks!</h1>
+    <p class="modal-subheading">
+        If you enjoyed you can check out the code on <a
+            href="https://github.com/MarkLee7916/Minesweeper-Angular">GitHub</a>
+    </p>
+
+    <img src="assets/code.png" class="modal-image"/>
+    <button (click)="onHide()" class="finish-tutorial">Close Tutorial</button>
+    <button (click)="prevModal()" class="prev-page">Prev</button>
+    <button (click)="onHide()" id="finish-final-modal">Finish</button>
+</div>
