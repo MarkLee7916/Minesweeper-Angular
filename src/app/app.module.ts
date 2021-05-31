@@ -13,7 +13,7 @@ import { ModalComponent } from './components/modal/modal.component';
     GameComponent,
     TileComponent,
     MenuComponent,
-    ModalComponent
+    ModalComponent,
   ],
   imports: [
     BrowserModule

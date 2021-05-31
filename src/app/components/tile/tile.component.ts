@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { emptyTile, Tile, Coord } from 'src/app/grid';
+import { Tile, Coord } from 'src/app/game';
 
 @Component({
   selector: 'app-tile',
@@ -25,8 +25,6 @@ export class TileComponent {
     [8, "cyan"],
   ]);
 
-
-
   getDisplaySymbol() {
     if (this.tile.hasFlag && !this.tile.hasBomb && this.isGameOver) {
       return "❌";
@@ -50,8 +48,4 @@ export class TileComponent {
 
     this.rightClickEmit.emit(this.coord);
   }
-
-
-
-
 }

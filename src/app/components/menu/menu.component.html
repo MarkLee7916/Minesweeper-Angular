@@ -3,6 +3,7 @@
         <span>Bomb probability per tile:</span>
     
         <input 
+            class="range-slider"
             (change)="onBombProbabiltyChange($event)" 
             type="range" 
             [defaultValue]="bombProbabilityPerTile" 
@@ -18,4 +19,12 @@
     <button (click)="onResize()">Resize Page</button>
 
     <button (click)="onShowTutorial()">Tutorial</button>
+
+    <div *ngIf="isTouchscreen" class="slider-container">
+        <span>Toggle Mode:</span>
+    
+        <input (change)="onOperationTypeOnLeftClickChange($event)" class="toggle-switch" type="range" min="0" max="1">
+    
+        <span>{{operationTypeToMessage.get(operationTypeOnLeftClick)}}</span>
+    </div>
 </div>

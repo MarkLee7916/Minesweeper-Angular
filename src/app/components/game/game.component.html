@@ -1,6 +1,7 @@
 <div id="main-content" [style.opacity]="isModalVisible ? '0.1' : '1'">
     <app-menu 
         [(bombProbabilityPerTile)]="bombProbabilityPerTile" 
+        [(operationTypeOnLeftClick)]="operationTypeOnLeftClick"
         (resetEmit)="resetGame()" 
         (resizeEmit)="resizePage()"
         (showTutorialEmit)="showTutorial()"
